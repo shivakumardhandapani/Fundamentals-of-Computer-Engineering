@@ -1,22 +1,63 @@
-This project is designed to schedule tasks efficiently in a Mobile Cloud Computing (MCC) environment. The program is based on an algorithm proposed in a research paper titled "Energy and performance aware-Task Scheduling in Mobile Cloud Computing environment" by Professor Xue Lin. Here's a breakdown of the key points:
+# Mobile Cloud Computing Task Scheduler
 
+This project implements an energy-efficient and performance-aware task scheduling algorithm for mobile cloud computing (MCC) environments.
 
-•	Program Development: Developed a software program with the purpose of scheduling tasks within a Mobile Cloud Computing environment. This program is designed to automate the process of assigning tasks to available computing resources in a mobile cloud setup.
+## Overview
 
-•	Proposed Algorithm: The scheduling algorithm utilized in the program is based on the one proposed in the research paper authored by Professor Xue Lin. This algorithm involves complex calculations and decision-making processes to determine the optimal allocation of tasks to various computing resources.
+The task scheduler aims to optimize the execution of applications on mobile devices by selectively offloading tasks to the cloud. It balances two key objectives:
 
-•	Task Prioritization and Allocation: The algorithm implemented in the program considers various factors such as task priorities, computing resource capabilities, and possibly network conditions. It aims to efficiently allocate tasks to available resources while considering performance requirements and energy consumption constraints.
+1. Minimizing energy consumption on the mobile device
+2. Meeting application completion time constraints
 
-•	Optimization Goals: The primary goals of the algorithm include optimizing energy consumption and execution time. This means that the program aims to minimize the amount of energy used by the computing resources while also ensuring that tasks are completed within acceptable time frames
+The algorithm works with task graphs representing applications and makes intelligent decisions about which tasks to execute locally vs offload to the cloud.
 
-•	Testing and Results: The program has been tested with multiple input tasks, each with different scheduling requirements. The testing likely involved running simulations or real-world experiments to evaluate the performance of the scheduling algorithm under various scenarios. The results obtained from these tests validate the effectiveness of the proposed algorithm in achieving its optimization goals.
+## Key Features
 
+- Two-step scheduling algorithm:
+  1. Initial scheduling to minimize completion time
+  2. Task migration to reduce energy consumption
+- Handles heterogeneous local cores and cloud resources
+- Accounts for wireless communication overhead when offloading
+- Linear-time rescheduling for efficient task migration
+- Preserves task precedence requirements
 
-These are the 5 inputs used for testing the Algorithm:
+## Algorithm Details
 
-![Input (1)](https://github.com/shivakumardhandapani/EECE7205/assets/156853108/2e0fbb2d-0396-4b4b-ba38-0309657e9b88)
-![Input (2)](https://github.com/shivakumardhandapani/EECE7205/assets/156853108/a39e4108-1f86-4ef1-9a2b-7210b2d5946f)
-![Input (3)](https://github.com/shivakumardhandapani/EECE7205/assets/156853108/a35c87f8-5303-4fdd-99e7-09b509e88618)
-![Input (4)](https://github.com/shivakumardhandapani/EECE7205/assets/156853108/e3881a80-f0e3-4380-a7e2-3ee698557979)
-![Input (5)](https://github.com/shivakumardhandapani/EECE7205/assets/156853108/29744f0b-bc96-4877-871d-cd8ae335c065)
+### Initial Scheduling
 
+1. Primary assignment - Classify tasks as local or cloud based on execution time
+2. Task prioritization - Sort tasks based on dependencies and weights  
+3. Execution unit selection - Schedule tasks on cores/cloud to minimize finish time
+
+### Task Migration 
+
+- Iteratively moves tasks between cores or to cloud to reduce energy
+- Uses efficient linear-time rescheduling algorithm
+- Maintains completion time constraint
+
+## Usage
+
+The scheduler takes as input:
+
+- Task graph with execution times on different cores
+- Number of local cores
+- Cloud parameters (transmission times, etc.)
+- Maximum allowed completion time
+
+It outputs:
+
+- Final task schedule (local core assignments and cloud offloading)
+- Total energy consumption
+- Application completion time
+
+## Results
+
+Simulation results show the algorithm can reduce energy consumption by up to 3.1x compared to baseline approaches while meeting timing constraints.
+
+## References
+
+Lin, X., Wang, Y., Xie, Q., & Pedram, M. (2014). Energy and Performance-Aware Task Scheduling in a Mobile Cloud Computing Environment. 2014 IEEE 7th International Conference on Cloud Computing, 192-199.
+
+# Note
+
+This repository is for educational purposes and to showcase the work completed during the course.
