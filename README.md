@@ -1,6 +1,6 @@
 # Mobile Cloud Computing Task Scheduler
 
-This project implements an energy-efficient and performance-aware task scheduling algorithm for mobile cloud computing (MCC) environments.
+This project is a part of the course EECE7205 from Northeastern University by Professor Xue Lin (Shelley) in Fall 2023 and this project implements an energy-efficient and performance-aware task scheduling algorithm for mobile cloud computing (MCC) environments.
 
 ## Overview
 
